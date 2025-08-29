@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Secretive Text Animation */
+.secretive-text {
+  animation: secret-reveal 5s infinite alternate ease-in-out;
+  will-change: opacity, filter, transform;
+}
+
+@keyframes secret-reveal {
+  0% {
+    opacity: 0.2;
+    filter: blur(1.5px);
+    transform: translateY(0px);
+  }
+  25% {
+    opacity: 0.4;
+    filter: blur(1px);
+    transform: translateY(-1px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(0px);
+    transform: translateY(0px);
+  }
+  75% {
+    opacity: 0.6;
+    filter: blur(0.5px);
+    transform: translateY(1px);
+  }
+  100% {
+    opacity: 0.3;
+    filter: blur(1px);
+    transform: translateY(0px);
+  }
+}
+
+/* Additional word breaking utilities */
+.word-break {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure proper text wrapping in chat messages */
+.prose p, .prose li, .prose code {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
