@@ -191,22 +191,6 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            <div className="bg-slate-700/80 p-4 rounded-lg backdrop-blur-sm">
-              <p className="text-sm text-slate-400 mb-2">XMR Address:</p>
-              <div className="flex items-start sm:items-center justify-between bg-slate-900/80 rounded p-3 gap-2 backdrop-blur-sm">
-                <code className="text-xs text-slate-300 break-all font-mono flex-1 min-w-0">{xmrAddress}</code>
-                <button
-                  onClick={() => copyAddress(xmrAddress)}
-                  className="p-1 text-slate-400 hover:text-slate-100 transition-colors flex-shrink-0"
-                >
-                  {copiedAddress === xmrAddress ? (
-                    <Check className="w-4 h-4 text-green-500" />
-                  ) : (
-                    <Copy className="w-4 h-4" />
-                  )}
-                </button>
-              </div>
-            </div>
             <div className="bg-deep-rose-800 p-4 rounded-lg backdrop-blur-sm">
               <p className="text-sm text-slate-200 mb-2">XMR Address:</p>
               <div className="flex items-start sm:items-center justify-between bg-deep-rose-950 rounded p-3 gap-2 backdrop-blur-sm">
