@@ -58,7 +58,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <div className="bg-black pt-16 pb-12 sm:py-12 lg:py-16">
+      <div className="bg-ink-black pt-16 pb-12 sm:py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative w-full aspect-video max-h-[70vh] rounded-lg overflow-hidden shadow-2xl">
             {/* Video Background */}
@@ -80,7 +80,7 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Action Buttons Section */}
-      <div className="bg-black py-8 lg:py-12">
+      <div className="bg-ink-black py-8 lg:py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/chat">
@@ -98,7 +98,7 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Features Section */}
-      <div className="max-w-7xl mx-auto px-4 py-20 bg-black">
+      <div className="max-w-7xl mx-auto px-4 py-20 bg-ink-black">
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-100 mb-6 font-noto-serif">
             Master Monero with Confidence and Clarity
@@ -173,7 +173,7 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Donation Section */}
-      <div className="max-w-7xl mx-auto px-4 py-20 bg-black">
+      <div className="max-w-7xl mx-auto px-4 py-20 bg-ink-black">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-6 font-noto-serif">
             Support This Project
