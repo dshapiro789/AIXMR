@@ -246,7 +246,7 @@ In the meantime, here are some helpful Monero resources:
   };
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-4rem)] bg-black">
+    <div className="flex flex-col min-h-[calc(100vh-4rem)] bg-ink-black">
       {/* Main Chat Area */}
       <div className="flex-1 flex flex-col">
         {/* Messages */}
@@ -258,7 +258,7 @@ In the meantime, here are some helpful Monero resources:
             >
               <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                 message.role === 'user' 
-                  ? 'bg-slate-600 shadow-md' 
+                  ? 'bg-slate-700 shadow-md shadow-slate-950/50' 
                   : 'bg-deep-rose-800 shadow-lg shadow-deep-rose-500/25'
               }`}>
                 {message.role === 'user' ? (
@@ -271,12 +271,12 @@ In the meantime, here are some helpful Monero resources:
               <div className={`flex-1 min-w-0 ${message.role === 'user' ? 'text-right' : ''}`}>
                 <div className={`rounded-lg p-3 sm:p-4 max-w-full sm:max-w-[85%] ${
                   message.role === 'user'
-                    ? 'bg-gray-800/90 text-slate-100 ml-auto shadow-md backdrop-blur-sm break-words w-fit'
-                    : 'bg-gray-900/90 border border-gray-600/50 shadow-md backdrop-blur-sm mr-auto break-words w-fit'
+                    ? 'bg-charcoal/90 text-slate-200 border border-slate-700/50 ml-auto shadow-md shadow-slate-950/50 backdrop-blur-sm break-words w-fit'
+                    : 'bg-ink-black/90 border border-deep-rose-900/50 text-slate-200 shadow-lg shadow-deep-rose-950/50 backdrop-blur-sm mr-auto break-words w-fit'
                 }`}>
                   <div className={`prose prose-sm max-w-none break-words overflow-wrap-anywhere word-break ${
                     message.role === 'user' 
-                      ? 'prose-slate text-slate-100' 
+                      ? 'prose-slate text-slate-200' 
                       : 'prose-invert'
                   }`}>
                     {message.role === 'user' ? (
@@ -341,22 +341,22 @@ In the meantime, here are some helpful Monero resources:
                           code: ({ children, className }) => {
                             const isInline = !className;
                             return isInline ? (
-                              <code className="bg-gray-800/80 text-red-300 px-1.5 py-0.5 rounded text-sm font-mono break-all">
+                              <code className="bg-charcoal/80 text-deep-rose-300 px-1.5 py-0.5 rounded text-sm font-mono break-all">
                                 {children}
                               </code>
                             ) : (
-                              <code className="block bg-gray-800/80 text-slate-300 p-3 rounded-lg text-sm font-mono overflow-x-auto">
+                              <code className="block bg-charcoal/80 text-slate-300 p-3 rounded-lg text-sm font-mono overflow-x-auto">
                                 {children}
                               </code>
                             );
                           },
                           pre: ({ children }) => (
-                            <pre className="bg-gray-800/80 text-slate-300 p-4 rounded-lg text-sm font-mono overflow-x-auto mb-4 border border-gray-600/30">
+                            <pre className="bg-charcoal/80 text-slate-300 p-4 rounded-lg text-sm font-mono overflow-x-auto mb-4 border border-slate-700/30">
                               {children}
                             </pre>
                           ),
                           blockquote: ({ children }) => (
-                            <blockquote className="border-l-4 border-red-500/50 pl-4 py-2 mb-4 bg-gray-800/30 rounded-r-lg">
+                            <blockquote className="border-l-4 border-deep-rose-500/50 pl-4 py-2 mb-4 bg-charcoal/30 rounded-r-lg">
                               <div className="text-slate-300 italic">
                                 {children}
                               </div>
@@ -367,7 +367,7 @@ In the meantime, here are some helpful Monero resources:
                               href={href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-red-400 hover:text-red-300 underline transition-colors break-all word-break"
+                              className="text-deep-rose-400 hover:text-deep-rose-300 underline transition-colors break-all word-break"
                             >
                               {children}
                             </a>
@@ -420,7 +420,7 @@ In the meantime, here are some helpful Monero resources:
               <div className="w-8 h-8 bg-deep-rose-800 rounded-full flex items-center justify-center shadow-lg shadow-deep-rose-500/25">
                 <Bot className="w-4 h-4 text-white" />
               </div>
-              <div className="bg-gray-900/90 border border-gray-600/50 rounded-lg p-3 sm:p-4 shadow-md backdrop-blur-sm">
+              <div className="bg-ink-black/90 border border-deep-rose-900/50 rounded-lg p-3 sm:p-4 shadow-lg shadow-deep-rose-950/50 backdrop-blur-sm">
                 <div className="flex items-center space-x-2">
                   <div className="flex space-x-1">
                     <div className="w-2 h-2 bg-slate-400 rounded-full animate-bounce"></div>
@@ -437,7 +437,7 @@ In the meantime, here are some helpful Monero resources:
         </div>
 
         {/* Input Area */}
-        <div className="bg-gray-900/95 border-t border-gray-600/50 px-4 sm:px-6 py-4 backdrop-blur-sm flex-shrink-0">
+        <div className="bg-ink-black/95 border-t border-deep-rose-900/50 px-4 sm:px-6 py-4 backdrop-blur-sm flex-shrink-0">
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
             <div className="flex-1">
               <textarea
@@ -446,7 +446,7 @@ In the meantime, here are some helpful Monero resources:
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder="Ask me about Monero privacy, wallets, nodes, or safety practices..."
-                className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-800/90 border border-gray-600/50 rounded-lg text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-deep-rose-600 focus:border-deep-rose-600 focus:bg-gray-700/90 resize-none transition-all duration-200 backdrop-blur-sm text-sm sm:text-base"
+                className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-charcoal/70 border border-slate-700/50 rounded-lg text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-deep-rose-700 focus:border-deep-rose-700 focus:bg-charcoal/90 resize-none transition-all duration-200 backdrop-blur-sm text-sm sm:text-base"
                 rows={3}
                 disabled={isLoading}
               />
