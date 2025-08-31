@@ -102,6 +102,8 @@ const ContactPage: React.FC = () => {
             </div>
           </Card>
         </div>
+      </div>
+    </div>
   );
 };
 
