@@ -8,7 +8,7 @@ import ModelSettings from './components/Settings/ModelSettings';
 
 function App() {
   return (
-    <div className="min-h-screen bg-black text-slate-100">
+    <div className="min-h-screen bg-ink-black text-slate-200">
       <Router>
         <Navbar />
         <Routes>
