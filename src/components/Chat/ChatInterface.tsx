@@ -271,8 +271,8 @@ In the meantime, here are some helpful Monero resources:
               <div className={`flex-1 min-w-0 ${message.role === 'user' ? 'text-right' : ''}`}>
                 <div className={`rounded-lg p-3 sm:p-4 max-w-full sm:max-w-[85%] ${
                   message.role === 'user'
-                    ? 'bg-gray-800/90 text-slate-100 ml-auto shadow-md backdrop-blur-sm break-words'
-                    : 'bg-gray-900/90 border border-gray-600/50 shadow-md backdrop-blur-sm mr-auto break-words'
+                    ? 'bg-gray-800/90 text-slate-100 ml-auto shadow-md backdrop-blur-sm break-words w-fit'
+                    : 'bg-gray-900/90 border border-gray-600/50 shadow-md backdrop-blur-sm mr-auto break-words w-fit'
                 }`}>
                   <div className={`prose prose-sm max-w-none break-words overflow-wrap-anywhere word-break ${
                     message.role === 'user' 
