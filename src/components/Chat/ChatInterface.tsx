@@ -274,14 +274,14 @@ In the meantime, here are some helpful Monero resources:
                     ? 'bg-charcoal/90 text-slate-200 border border-slate-700/50 ml-auto shadow-md shadow-slate-950/50 backdrop-blur-sm break-words w-fit'
                     : 'bg-ink-black/90 border border-deep-rose-900/50 text-slate-200 shadow-lg shadow-deep-rose-950/50 backdrop-blur-sm mr-auto break-words w-fit'
                 }`}>
-                  <div className={`prose prose-sm max-w-none break-words overflow-wrap-anywhere word-break ${
+                  <div className={`prose max-w-none break-words overflow-wrap-anywhere word-break text-base font-inter ${
                     message.role === 'user' 
                       ? 'prose-slate text-slate-200' 
                       : 'prose-invert'
                   }`}>
                     {message.role === 'user' ? (
                       // Keep user messages as plain text
-                      <div className="break-words overflow-wrap-anywhere">
+                      <div className="break-words overflow-wrap-anywhere text-base font-inter">
                         {message.content.split('\n').map((line, index) => (
                         <React.Fragment key={index}>
                           {line}
@@ -294,32 +294,32 @@ In the meantime, here are some helpful Monero resources:
                       <ReactMarkdown
                         components={{
                           h1: ({ children }) => (
-                            <h1 className="text-xl font-bold text-slate-100 mb-4 mt-6 first:mt-0 border-b border-gray-600/30 pb-2">
+                            <h1 className="text-2xl font-bold text-slate-100 mb-4 mt-6 first:mt-0 border-b border-gray-600/30 pb-2">
                               {children}
                             </h1>
                           ),
                           h2: ({ children }) => (
-                            <h2 className="text-lg font-semibold text-slate-100 mb-3 mt-5 first:mt-0">
+                            <h2 className="text-xl font-semibold text-slate-100 mb-3 mt-5 first:mt-0">
                               {children}
                             </h2>
                           ),
                           h3: ({ children }) => (
-                            <h3 className="text-base font-semibold text-slate-200 mb-2 mt-4 first:mt-0">
+                            <h3 className="text-lg font-semibold text-slate-200 mb-2 mt-4 first:mt-0">
                               {children}
                             </h3>
                           ),
                           p: ({ children }) => (
-                            <p className="text-slate-300 mb-3 leading-relaxed">
+                            <p className="text-slate-300 mb-4 leading-relaxed">
                               {children}
                             </p>
                           ),
                           ul: ({ children }) => (
-                            <ul className="list-disc list-inside mb-4 space-y-1 text-slate-300">
+                            <ul className="list-disc list-inside mb-4 space-y-2 text-slate-300">
                               {children}
                             </ul>
                           ),
                           ol: ({ children }) => (
-                            <ol className="list-decimal list-inside mb-4 space-y-1 text-slate-300">
+                            <ol className="list-decimal list-inside mb-4 space-y-2 text-slate-300">
                               {children}
                             </ol>
                           ),
@@ -341,22 +341,22 @@ In the meantime, here are some helpful Monero resources:
                           code: ({ children, className }) => {
                             const isInline = !className;
                             return isInline ? (
-                              <code className="bg-charcoal/80 text-deep-rose-300 px-1.5 py-0.5 rounded text-sm font-mono break-all">
+                              <code className="bg-charcoal/80 text-deep-rose-300 px-1.5 py-0.5 rounded text-base font-mono break-all">
                                 {children}
                               </code>
                             ) : (
-                              <code className="block bg-charcoal/80 text-slate-300 p-3 rounded-lg text-sm font-mono overflow-x-auto">
+                              <code className="block bg-charcoal/80 text-slate-300 p-5 rounded-lg text-base font-mono overflow-x-auto">
                                 {children}
                               </code>
                             );
                           },
                           pre: ({ children }) => (
-                            <pre className="bg-charcoal/80 text-slate-300 p-4 rounded-lg text-sm font-mono overflow-x-auto mb-4 border border-slate-700/30">
+                            <pre className="bg-charcoal/80 text-slate-300 p-5 rounded-lg text-base font-mono overflow-x-auto mb-4 border border-slate-700/30">
                               {children}
                             </pre>
                           ),
                           blockquote: ({ children }) => (
-                            <blockquote className="border-l-4 border-deep-rose-500/50 pl-4 py-2 mb-4 bg-charcoal/30 rounded-r-lg">
+                            <blockquote className="border-l-4 border-deep-rose-500/50 pl-5 py-3 mb-4 bg-charcoal/30 rounded-r-lg">
                               <div className="text-slate-300 italic">
                                 {children}
                               </div>
