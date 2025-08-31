@@ -131,6 +131,22 @@ const ContactPage: React.FC = () => {
                   </button>
                 </div>
               </div>
+              <div className="bg-deep-rose-800 p-4 rounded-lg backdrop-blur-sm border border-deep-rose-600/50">
+                <p className="text-sm text-slate-200 mb-2">XMR Address:</p>
+                <div className="flex items-start sm:items-center justify-between bg-deep-rose-950 rounded p-3 gap-2 backdrop-blur-sm border border-deep-rose-800/30">
+                  <code className="text-xs text-slate-200 break-all font-mono flex-1 min-w-0">{xmrAddress}</code>
+                  <button
+                    onClick={() => copyAddress(xmrAddress)}
+                    className="p-1 text-slate-300 hover:text-slate-100 transition-colors flex-shrink-0"
+                  >
+                    {copiedAddress === xmrAddress ? (
+                      <Check className="w-4 h-4 text-green-500" />
+                    ) : (
+                      <Copy className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
