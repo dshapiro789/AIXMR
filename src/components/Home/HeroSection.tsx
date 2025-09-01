@@ -6,12 +6,12 @@ import HeroFog from '../Effects/HeroFog';
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex justify-center overflow-hidden">
       {/* Animated star field background */}
       <HeroFog />
       
       {/* Main content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-16 sm:pt-20 md:pt-24 lg:pt-32">
         {/* Japanese character with secretive animation */}
         <div className="mb-8 sm:mb-12">
           <span className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-noto-serif text-deep-rose-500 secretive-text block">
@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
         </h1>
         
         {/* Subtitle with red accent */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-deep-rose-500 mb-8 sm:mb-12 font-noto-serif leading-tight">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-deep-rose-500 mb-8 sm:mb-12 font-noto-serif leading-tight md:leading-normal">
           Guided by the Principles
           <br />
           of Privacy
