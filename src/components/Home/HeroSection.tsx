@@ -6,7 +6,7 @@ import HeroFog from '../Effects/HeroFog';
 
 const HeroSection: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black flex justify-center overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-ink-black via-ink-black to-black flex justify-center overflow-hidden">
       {/* Animated star field background */}
       <HeroFog />
       
