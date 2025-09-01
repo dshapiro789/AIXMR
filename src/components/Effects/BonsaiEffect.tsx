@@ -7,7 +7,7 @@ const BonsaiImage: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   
   // Load the bonsai texture
-  const texture = useLoader(THREE.TextureLoader, '/Bonsai (no bg).png');
+  const texture = useLoader(THREE.TextureLoader, '/bonsai-no-bg.png');
   
   // Animate subtle floating motion
   useFrame((state) => {
