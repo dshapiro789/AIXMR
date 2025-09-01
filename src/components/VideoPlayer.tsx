@@ -14,13 +14,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, className = '' }) => {
         loop
         muted
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover hidden ${className}`}
+        className={`absolute inset-0 w-full h-full object-cover md:hidden ${className}`}
         style={{
           objectPosition: 'center center',
           borderRadius: 'inherit'
         }}
       >
-        <source src="/Main.mp4" type="video/mp4" />
+        <source src="/AI XMR (large font 2).mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       
@@ -30,7 +30,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, className = '' }) => {
         loop
         muted
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover ${className}`}
+        className={`absolute inset-0 w-full h-full object-cover hidden md:block ${className}`}
         style={{
           objectPosition: 'center center',
           borderRadius: 'inherit'

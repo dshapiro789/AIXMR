@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
           <div className="relative w-full aspect-video max-h-[70vh] rounded-lg overflow-hidden shadow-2xl">
             {/* Video Background */}
             <VideoPlayer 
-              src="/AI XMR Hero.mp4" 
+              src="/Main.mp4" 
               className="rounded-lg"
             />
             
