@@ -131,23 +131,6 @@ const SettingsPage: React.FC = () => {
               </div>
             </div>
           </Card>
-
-          {hasChanges && (
-            <Card variant="warning">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Settings className="w-5 h-5 text-amber-400" />
-                  <div>
-                    <h3 className="font-medium text-amber-200">Unsaved Changes</h3>
-                    <p className="text-sm text-amber-300">You have unsaved changes to your settings.</p>
-                  </div>
-                </div>
-                <Button variant="primary" onClick={saveSettings}>
-                  Save Changes
-                </Button>
-              </div>
-            </Card>
-          )}
         </div>
       )}
 
@@ -216,23 +199,6 @@ const SettingsPage: React.FC = () => {
               </div>
             </div>
           </Card>
-
-          {hasChanges && (
-            <Card variant="warning">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Settings className="w-5 h-5 text-amber-400" />
-                  <div>
-                    <h3 className="font-medium text-amber-200">Unsaved Changes</h3>
-                    <p className="text-sm text-amber-300">You have unsaved changes to your settings.</p>
-                  </div>
-                </div>
-                <Button variant="primary" onClick={saveSettings}>
-                  Save Changes
-                </Button>
-              </div>
-            </Card>
-          )}
         </div>
       )}
 
@@ -275,6 +241,24 @@ const SettingsPage: React.FC = () => {
             </div>
           </Card>
         </div>
+      )}
+
+      {/* Global Save Changes Button - appears at bottom of all tabs when there are changes */}
+      {hasChanges && (
+        <Card variant="warning">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <Settings className="w-5 h-5 text-amber-400" />
+              <div>
+                <h3 className="font-medium text-amber-200">Unsaved Changes</h3>
+                <p className="text-sm text-amber-300">You have unsaved changes to your settings.</p>
+              </div>
+            </div>
+            <Button variant="primary" onClick={saveSettings}>
+              Save Changes
+            </Button>
+          </div>
+        </Card>
       )}
     </div>
   );
