@@ -12,6 +12,7 @@ const ModelSettings: React.FC = () => {
   const [newModel, setNewModel] = useState({
     id: '',
     name: '',
+    provider: '',
     baseUrl: '',
     apiKey: ''
   });
@@ -44,6 +45,7 @@ const ModelSettings: React.FC = () => {
     const modelToAdd: ModelConfig = {
       id: newModel.id.trim(),
       name: newModel.name.trim(),
+      provider: newModel.provider.trim() || undefined,
       baseUrl: newModel.baseUrl.trim() || undefined,
       apiKey: newModel.apiKey.trim() || undefined,
       isDefault: false
@@ -51,9 +53,8 @@ const ModelSettings: React.FC = () => {
 
     storageUtils.addModel(modelToAdd);
     setModels([...models, modelToAdd]);
-    setNewModel({ id: '', name: '', baseUrl: '', apiKey: '' });
+    setNewModel({ id: '', name: '', provider: '', baseUrl: '', apiKey: '' });
     setShowAddForm(false);
-    setHasChanges(true);
   };
 
   const handleDeleteModel = (id: string) => {
@@ -67,9 +68,9 @@ const ModelSettings: React.FC = () => {
         const defaultModel = updatedModels.find(m => m.isDefault);
         if (defaultModel) {
           setSettings({ ...settings, preferredModel: defaultModel.id });
+          setHasChanges(true);
         }
       }
-      setHasChanges(true);
     }
   };
 
@@ -92,7 +93,7 @@ const ModelSettings: React.FC = () => {
   };
 
   const resetAddForm = () => {
-    setNewModel({ id: '', name: '', baseUrl: '', apiKey: '' });
+    setNewModel({ id: '', name: '', provider: '', baseUrl: '', apiKey: '' });
     setShowAddForm(false);
   };
 
@@ -141,6 +142,9 @@ const ModelSettings: React.FC = () => {
                   <div className="min-w-0 flex-1">
                     <h3 className="font-medium text-slate-100 text-sm sm:text-base truncate">{model.name}</h3>
                     <p className="text-xs sm:text-sm text-slate-400 truncate">ID: {model.id}</p>
+                    {model.provider && (
+                      <p className="text-xs text-slate-500 truncate">Provider: {model.provider}</p>
+                    )}
                     {model.baseUrl && (
                       <p className="text-xs text-slate-500 truncate">Endpoint: {model.baseUrl}</p>
                     )}
@@ -234,9 +238,17 @@ const ModelSettings: React.FC = () => {
               required
             />
             
+            <Input
+              label="Provider"
+              placeholder="e.g., OpenRouter, OpenAI, Anthropic"
+              value={newModel.provider}
+              onChange={(value) => setNewModel({ ...newModel, provider: value })}
+              icon={Globe}
+            />
+            
             <div className="sm:col-span-2">
               <Input
-                label="Base URL (API Endpoint)"
+                label="API Endpoint"
                 placeholder="e.g., https://api.openai.com/v1"
                 value={newModel.baseUrl}
                 onChange={(value) => setNewModel({ ...newModel, baseUrl: value })}
