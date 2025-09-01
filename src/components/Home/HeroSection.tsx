@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
         </h1>
         
         {/* Subtitle with red accent */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-deep-rose-500 mb-8 sm:mb-12 font-noto-serif leading-tight md:leading-normal">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-deep-rose-500 mb-8 sm:mb-12 font-noto-serif leading-tight md:leading-extra-loose">
           Guided by the Principles
           <br />
           of Privacy

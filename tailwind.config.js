@@ -33,6 +33,10 @@ export default {
         'noto-serif': ['Noto Serif JP', 'serif'],
         'inter': ['Inter', 'sans-serif'],
       },
+      lineHeight: {
+        'extra-loose': '2.5',
+        'super-loose': '3',
+      },
       animation: {
         'fade-in': 'fadeIn 0.15s ease-out',
         'slide-up': 'slideUp 0.15s ease-out',
