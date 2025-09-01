@@ -24,21 +24,21 @@ const HomePage: React.FC = () => {
       title: 'AI Tutor Chat',
       description: 'Get instant, privacy-focused guidance on Monero usage, wallets, and best practices.',
       link: '/chat',
-      cta: 'Start Chat'
+      cta: user ? 'Start Chat' : 'Sign Up or Sign In to Access'
     },
     {
       icon: Book,
       title: 'Curated Resources',
       description: 'Browse vetted wallets, nodes, explorers, and tools.',
       link: '/resources',
-      cta: 'Explore Resources'
+      cta: user ? 'Explore Resources' : 'Sign Up or Sign In to Access'
     },
     {
       icon: Shield,
       title: 'Progressive Learning',
       description: 'Master Monero step-by-step with structured lessons covering privacy, security, and operations.',
       link: '/learn',
-      cta: 'Start Learning'
+      cta: user ? 'Start Learning' : 'Sign Up or Sign In to Access'
     },
     {
       icon: Heart,
@@ -89,11 +89,21 @@ const HomePage: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-slate-100 mb-4">{feature.title}</h3>
                 <p className="text-slate-300 mb-6 leading-relaxed">{feature.description}</p>
-                <Link to={feature.link}>
-                  <Button variant="secondary" className="w-full">
+                {user || feature.link === '/contact' ? (
+                  <Link to={feature.link}>
+                    <Button variant="secondary" className="w-full">
+                      {feature.cta}
+                    </Button>
+                  </Link>
+                ) : (
+                  <Button 
+                    variant="secondary" 
+                    className="w-full"
+                    onClick={() => setShowAuthModal(true)}
+                  >
                     {feature.cta}
                   </Button>
-                </Link>
+                )}
               </Card>
             );
           })}
