@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
       title: 'AI Tutor Chat',
       description: 'Get instant, privacy-focused guidance on Monero usage, wallets, and best practices.',
       link: '/chat',
-      cta: user ? 'Start Chat' : 'Sign Up / Sign In to Access'
+      cta: user ? 'Start Chat' : 'Sign  / Sign In to Access'
     },
     {
       icon: Book,
