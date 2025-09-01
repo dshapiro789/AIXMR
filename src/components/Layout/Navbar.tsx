@@ -13,8 +13,7 @@ const Navbar: React.FC = () => {
 
   // Public navigation items (always visible)
   const publicNavItems = [
-    { path: '/', label: 'Home', icon: Shield },
-    { path: '/contact', label: 'Contact', icon: Heart }
+    { path: '/', label: 'Home', icon: Shield }
   ];
 
   // Protected navigation items (only visible when logged in)
@@ -22,6 +21,7 @@ const Navbar: React.FC = () => {
     { path: '/chat', label: 'Chat', icon: MessageCircle },
     { path: '/resources', label: 'Resources', icon: Book },
     { path: '/learn', label: 'Learn', icon: Book },
+    { path: '/contact', label: 'Contact', icon: Heart },
     { path: '/settings', label: 'Settings', icon: Settings }
   ];
 
