@@ -24,21 +24,21 @@ const HomePage: React.FC = () => {
       title: 'AI Tutor Chat',
       description: 'Get instant, privacy-focused guidance on Monero usage, wallets, and best practices.',
       link: '/chat',
-      cta: user ? 'Start Chat' : 'Sign Up or Sign In to Access'
+      cta: user ? 'Start Chat' : 'Sign Up / Sign In to Access'
     },
     {
       icon: Book,
       title: 'Curated Resources',
       description: 'Browse vetted wallets, nodes, explorers, and tools.',
       link: '/resources',
-      cta: user ? 'Explore Resources' : 'Sign Up or Sign In to Access'
+      cta: user ? 'Explore Resources' : 'Sign Up / Sign In to Access'
     },
     {
       icon: Shield,
       title: 'Progressive Learning',
       description: 'Master Monero step-by-step with structured lessons covering privacy, security, and operations.',
       link: '/learn',
-      cta: user ? 'Start Learning' : 'Sign Up or Sign In to Access'
+      cta: user ? 'Start Learning' : 'Sign Up / Sign In to Access'
     },
     {
       icon: Heart,
