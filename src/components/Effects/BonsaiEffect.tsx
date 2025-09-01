@@ -2,12 +2,10 @@ import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame, useLoader } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
+import { TreePine } from 'lucide-react';
 
-const BonsaiImage: React.FC = () => {
+const BonsaiIcon: React.FC = () => {
   const meshRef = useRef<THREE.Mesh>(null);
-  
-  // Load the bonsai texture
-  const texture = useLoader(THREE.TextureLoader, '/bonsai-no-bg.png');
   
   // Animate subtle floating motion
   useFrame((state) => {
@@ -20,14 +18,36 @@ const BonsaiImage: React.FC = () => {
   });
 
   return (
-    <mesh ref={meshRef} position={[0, 0, 0]}>
-      <planeGeometry args={[4, 4]} />
-      <meshBasicMaterial 
-        map={texture} 
-        transparent={true}
-        alphaTest={0.1}
-      />
-    </mesh>
+    <group ref={meshRef} position={[0, 0, 0]}>
+      {/* Create a 3D tree-like structure using basic geometries */}
+      {/* Tree trunk */}
+      <mesh position={[0, -1, 0]}>
+        <cylinderGeometry args={[0.1, 0.15, 1, 8]} />
+        <meshLambertMaterial color="#8B4513" />
+      </mesh>
+      
+      {/* Tree foliage - main canopy */}
+      <mesh position={[0, 0.2, 0]}>
+        <sphereGeometry args={[0.8, 12, 8]} />
+        <meshLambertMaterial color="#228B22" />
+      </mesh>
+      
+      {/* Additional foliage layers for bonsai-like appearance */}
+      <mesh position={[-0.3, -0.1, 0.2]}>
+        <sphereGeometry args={[0.4, 8, 6]} />
+        <meshLambertMaterial color="#32CD32" />
+      </mesh>
+      
+      <mesh position={[0.4, 0.1, -0.1]}>
+        <sphereGeometry args={[0.3, 8, 6]} />
+        <meshLambertMaterial color="#228B22" />
+      </mesh>
+      
+      <mesh position={[0, 0.6, 0.1]}>
+        <sphereGeometry args={[0.25, 8, 6]} />
+        <meshLambertMaterial color="#32CD32" />
+      </mesh>
+    </group>
   );
 };
 
@@ -124,8 +144,8 @@ const BonsaiEffect: React.FC = () => {
           color="#9F1239"
         />
         
-        {/* The bonsai image */}
-        <BonsaiImage />
+        {/* The bonsai 3D model */}
+        <BonsaiIcon />
         
         {/* Floating particles */}
         <FloatingParticles />
