@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Navbar from './components/Layout/Navbar';
 import HomePage from './components/Home/HomePage';
 import ChatInterface from './components/Chat/ChatInterface';
@@ -17,11 +18,27 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/chat" element={<ChatInterface />} />
-            <Route path="/resources" element={<ResourceDirectory />} />
-            <Route path="/learn" element={<LearningHub />} />
+            <Route path="/chat" element={
+              <ProtectedRoute>
+                <ChatInterface />
+              </ProtectedRoute>
+            } />
+            <Route path="/resources" element={
+              <ProtectedRoute>
+                <ResourceDirectory />
+              </ProtectedRoute>
+            } />
+            <Route path="/learn" element={
+              <ProtectedRoute>
+                <LearningHub />
+              </ProtectedRoute>
+            } />
             <Route path="/contact" element={<ContactPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/settings" element={
+              <ProtectedRoute>
+                <SettingsPage />
+              </ProtectedRoute>
+            } />
           </Routes>
         </Router>
       </div>

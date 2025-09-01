@@ -11,14 +11,22 @@ const Navbar: React.FC = () => {
   const { user, loading, signOut } = useAuth();
   const location = useLocation();
 
-  const navItems = [
+  // Public navigation items (always visible)
+  const publicNavItems = [
     { path: '/', label: 'Home', icon: Shield },
+    { path: '/contact', label: 'Contact', icon: Heart }
+  ];
+
+  // Protected navigation items (only visible when logged in)
+  const protectedNavItems = [
     { path: '/chat', label: 'Chat', icon: MessageCircle },
     { path: '/resources', label: 'Resources', icon: Book },
     { path: '/learn', label: 'Learn', icon: Book },
-    { path: '/contact', label: 'Contact', icon: Heart },
     { path: '/settings', label: 'Settings', icon: Settings }
   ];
+
+  // Combine nav items based on authentication status
+  const navItems = user ? [...publicNavItems, ...protectedNavItems] : publicNavItems;
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/';
