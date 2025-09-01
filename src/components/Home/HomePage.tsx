@@ -148,7 +148,6 @@ const HomePage: React.FC = () => {
 
         <Card className="max-w-2xl mx-auto text-center">
           <div className="mb-6">
-            <BonsaiEffect />
             <h3 className="text-xl font-semibold text-slate-100 mb-2">Monero Donations</h3>
             <p className="text-slate-400">Primary funding method - completely private</p>
           </div>
