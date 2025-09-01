@@ -35,6 +35,7 @@ export interface ChatMessage {
 export interface ModelConfig {
   id: string;
   name: string;
+  provider?: string;
   baseUrl?: string;
   apiKey?: string;
   isDefault: boolean;
