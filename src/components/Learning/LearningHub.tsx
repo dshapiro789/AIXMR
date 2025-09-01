@@ -43,7 +43,7 @@ const LearningHub: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 py-8 bg-ink-black min-h-screen">
       <div className="mb-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-slate-100 mb-4 font-noto-serif">
-          Learn Monero (NOTE: This page is currently under maintenance)
+          Learn Monero (Coming Soon)
         </h1>
         <p className="text-slate-300 text-base sm:text-lg max-w-2xl">
           Master Monero through structured lessons covering privacy, security, and practical usage.
