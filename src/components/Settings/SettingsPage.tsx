@@ -151,7 +151,6 @@ const SettingsPage: React.FC = () => {
         </div>
       )}
 
-      {activeTab === 'models' && <ModelSettings />}
       {activeTab === 'models' && (
         <ModelSettings 
           currentSettings={settings}
