@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MessageCircle, Book, Shield, Heart, Copy, Check, QrCode } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 import Button from '../UI/Button';
 import Card from '../UI/Card';
 import Modal from '../UI/Modal';
 import BonsaiEffect from '../Effects/BonsaiEffect';
 import HeroSection from './HeroSection';
+import AuthModal from '../Auth/AuthModal';
 
 const HomePage: React.FC = () => {
   const [showDonateModal, setShowDonateModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const [copiedAddress, setCopiedAddress] = useState('');
   const [qrCode, setQrCode] = useState('/XMR QR.jpg');
+  const { user, loading } = useAuth();
 
   const xmrAddress = '89GEmrGsgzVQoW4PWubAuQfbRJFSaD5TK4Hu9faAv95h7TS7Emqk1jF6JwswAryQezEcEThTTEd1FEKrpCevNSz8Dyfq1Ez';
 
@@ -58,7 +62,11 @@ const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* New Hero Section */}
-      <HeroSection />
+      <HeroSection 
+        user={user}
+        loading={loading}
+        onOpenAuthModal={() => setShowAuthModal(true)}
+      />
 
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 py-20 bg-black">
@@ -243,6 +251,13 @@ const HomePage: React.FC = () => {
           </p>
         </div>
       </Modal>
+
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onAuthSuccess={() => setShowAuthModal(false)}
+      />
     </div>
   );
 };

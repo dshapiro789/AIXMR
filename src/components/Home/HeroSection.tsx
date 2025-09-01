@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MessageCircle, Book } from 'lucide-react';
+import { MessageCircle, Book, LogIn } from 'lucide-react';
+import { User } from '@supabase/supabase-js';
 import Button from '../UI/Button';
 import HeroFog from '../Effects/HeroFog';
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  user: User | null;
+  loading: boolean;
+  onOpenAuthModal: () => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ user, loading, onOpenAuthModal }) => {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-ink-black via-ink-black to-black flex justify-center overflow-hidden">
       {/* Animated star field background */}
@@ -38,25 +45,43 @@ const HeroSection: React.FC = () => {
         
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-          <Link to="/chat">
+          {loading ? (
+            <div className="flex items-center space-x-2 text-slate-300">
+              <div className="w-6 h-6 border-2 border-deep-rose-500 border-t-transparent rounded-full animate-spin"></div>
+              <span>Loading...</span>
+            </div>
+          ) : user ? (
+            <>
+              <Link to="/chat">
+                <Button 
+                  size="lg" 
+                  icon={MessageCircle} 
+                  className="w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-transform duration-200"
+                >
+                  Start Chat
+                </Button>
+              </Link>
+              <Link to="/resources">
+                <Button 
+                  variant="secondary" 
+                  size="lg" 
+                  icon={Book} 
+                  className="w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-transform duration-200 border-2"
+                >
+                  Explore Resources
+                </Button>
+              </Link>
+            </>
+          ) : (
             <Button 
               size="lg" 
-              icon={MessageCircle} 
+              icon={LogIn} 
+              onClick={onOpenAuthModal}
               className="w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-transform duration-200"
             >
-              Start Chat
+              Sign Up or Sign In
             </Button>
-          </Link>
-          <Link to="/resources">
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              icon={Book} 
-              className="w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-transform duration-200 border-2"
-            >
-              Explore Resources
-            </Button>
-          </Link>
+          )}
         </div>
       </div>
       
