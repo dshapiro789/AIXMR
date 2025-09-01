@@ -18,10 +18,11 @@ const FogParticles: React.FC = () => {
       positions[i * 3 + 2] = (Math.random() - 0.5) * 15; // z
       
       // Very subtle red-tinted fog colors
-      const intensity = Math.random() * 0.1 + 0.05;
-      colors[i * 3] = 0.3 + Math.random() * 0.2; // red
-      colors[i * 3 + 1] = 0.05 + Math.random() * 0.1; // green
-      colors[i * 3 + 2] = 0.05 + Math.random() * 0.1; // blue
+      // White/gray star-like particles
+      const intensity = Math.random() * 0.3 + 0.7;
+      colors[i * 3] = intensity; // red
+      colors[i * 3 + 1] = intensity; // green
+      colors[i * 3 + 2] = intensity; // blue
     }
     
     return [positions, colors];
@@ -60,8 +61,8 @@ const FogParticles: React.FC = () => {
     <Points ref={ref} positions={positions} colors={colors}>
       <PointMaterial
         transparent
-        opacity={0.15}
-        size={0.02}
+        opacity={0.6}
+        size={0.015}
         sizeAttenuation={true}
         depthWrite={false}
         vertexColors

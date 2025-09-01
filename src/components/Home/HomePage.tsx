@@ -5,7 +5,7 @@ import Button from '../UI/Button';
 import Card from '../UI/Card';
 import Modal from '../UI/Modal';
 import BonsaiEffect from '../Effects/BonsaiEffect';
-import VideoPlayer from '../VideoPlayer';
+import HeroSection from './HeroSection';
 
 const HomePage: React.FC = () => {
   const [showDonateModal, setShowDonateModal] = useState(false);
@@ -57,45 +57,8 @@ const HomePage: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <div className="bg-black pt-16 pb-12 sm:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative w-full aspect-video max-h-[70vh] rounded-lg overflow-hidden shadow-2xl">
-            {/* Video Background */}
-            <VideoPlayer 
-              src="/AI XMR Hero.mp4" 
-              className="rounded-lg"
-            />
-            
-            {/* Dark Overlay for Better Text Readability */}
-            <div className="absolute inset-0 bg-black/30 rounded-lg"></div>
-          </div>
-          
-          {/* Mobile-only "Powered by AI" text */}
-          <div className="md:hidden mt-4 text-center">
-            <p className="text-slate-300 text-sm font-medium">Powered by AI</p>
-            <p className="text-slate-300 text-sm font-medium">& Community-Vetted Resources</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Action Buttons Section */}
-      <div className="bg-black py-8 lg:py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/chat">
-              <Button size="lg" icon={MessageCircle} className="w-full sm:w-auto shadow-2xl">
-                Start Chat
-              </Button>
-            </Link>
-            <Link to="/resources">
-              <Button variant="secondary" size="lg" icon={Book} className="w-full sm:w-auto shadow-2xl">
-                Explore Resources
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
+      {/* New Hero Section */}
+      <HeroSection />
 
       {/* Features Section */}
       <div className="max-w-7xl mx-auto px-4 py-20 bg-black">
