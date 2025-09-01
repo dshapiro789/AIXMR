@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Plus, Trash2, Save, Bot, Key, Globe, Tag, MessageCircle, AlertTriangle } from 'lucide-react';
 import { ModelConfig, AppSettings } from '../../types';
 import { storageUtils } from '../../utils/storage';
@@ -18,10 +18,22 @@ const ModelSettings: React.FC = () => {
   });
   const [showAddForm, setShowAddForm] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
+  const addModelFormRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     loadModels();
   }, []);
+
+  useEffect(() => {
+    if (showAddForm && addModelFormRef.current) {
+      setTimeout(() => {
+        addModelFormRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 100);
+    }
+  }, [showAddForm]);
 
   const loadModels = () => {
     const loadedModels = storageUtils.getModels();
@@ -179,50 +191,15 @@ const ModelSettings: React.FC = () => {
         </div>
       </Card>
 
-      {/* Chat History Management */}
-      <Card className="mb-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
-          <div className="flex items-center space-x-3">
-            <MessageCircle className="w-5 h-5 text-deep-rose-500" />
-            <div>
-              <h2 className="text-lg sm:text-xl font-semibold text-slate-100">Chat History</h2>
-              <p className="text-sm text-slate-400">Manage your conversation history</p>
-            </div>
-          </div>
-          <Button
-            variant="danger"
-            onClick={handleClearChatHistory}
-            className="w-full sm:w-auto"
-          >
-            Clear All Chat History
-          </Button>
-        </div>
-        
-        <div className="bg-amber-900/25 border border-amber-600/40 rounded-lg p-4 backdrop-blur-sm">
-          <div className="flex items-start space-x-2">
-            <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-amber-200">
-              <p className="font-medium mb-1">About Chat History</p>
-              <ul className="space-y-1 text-xs">
-                <li>• Chat history is stored locally in your browser</li>
-                <li>• Clearing history will permanently delete all conversations</li>
-                <li>• This action cannot be undone</li>
-                <li>• History is automatically cleared if "Don't Log Chats" is enabled</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Card>
-
       {/* Add New Model Form */}
       {showAddForm && (
-        <Card className="mb-6">
+        <Card className="mb-6" ref={addModelFormRef}>
           <h2 className="text-lg sm:text-xl font-semibold text-slate-100 mb-4 sm:mb-6">Add New Model</h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <Input
               label="Model ID"
-              placeholder="e.g., gpt-4, claude-3-sonnet"
+              placeholder="e.g., perplexity/sonar-reasoning"
               value={newModel.id}
               onChange={(value) => setNewModel({ ...newModel, id: value })}
               icon={Tag}
@@ -231,7 +208,7 @@ const ModelSettings: React.FC = () => {
             
             <Input
               label="Model Name"
-              placeholder="e.g., GPT-4, Claude 3 Sonnet"
+              placeholder="e.g., Perplexity: Sonar Reasoning"
               value={newModel.name}
               onChange={(value) => setNewModel({ ...newModel, name: value })}
               icon={Bot}
@@ -249,7 +226,7 @@ const ModelSettings: React.FC = () => {
             <div className="sm:col-span-2">
               <Input
                 label="API Endpoint"
-                placeholder="e.g., https://api.openai.com/v1"
+                placeholder="e.g., https://openrouter.ai/api/v1"
                 value={newModel.baseUrl}
                 onChange={(value) => setNewModel({ ...newModel, baseUrl: value })}
                 icon={Globe}
@@ -287,6 +264,41 @@ const ModelSettings: React.FC = () => {
           </div>
         </Card>
       )}
+
+      {/* Chat History Management */}
+      <Card className="mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div className="flex items-center space-x-3">
+            <MessageCircle className="w-5 h-5 text-deep-rose-500" />
+            <div>
+              <h2 className="text-lg sm:text-xl font-semibold text-slate-100">Chat History</h2>
+              <p className="text-sm text-slate-400">Manage your conversation history</p>
+            </div>
+          </div>
+          <Button
+            variant="danger"
+            onClick={handleClearChatHistory}
+            className="w-full sm:w-auto"
+          >
+            Clear All Chat History
+          </Button>
+        </div>
+        
+        <div className="bg-amber-900/25 border border-amber-600/40 rounded-lg p-4 backdrop-blur-sm">
+          <div className="flex items-start space-x-2">
+            <AlertTriangle className="w-4 h-4 text-amber-400 mt-0.5 flex-shrink-0" />
+            <div className="text-sm text-amber-200">
+              <p className="font-medium mb-1">About Chat History</p>
+              <ul className="space-y-1 text-xs">
+                <li>• Chat history is stored locally in your browser</li>
+                <li>• Clearing history will permanently delete all conversations</li>
+                <li>• This action cannot be undone</li>
+                <li>• History is automatically cleared if "Don't Log Chats" is enabled</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Card>
 
       {/* Save Changes */}
       {hasChanges && (
