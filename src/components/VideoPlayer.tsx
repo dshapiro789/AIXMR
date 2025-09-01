@@ -14,7 +14,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, className = '' }) => {
         loop
         muted
         playsInline
-        className={`absolute inset-0 w-full h-full object-cover md:hidden ${className}`}
+        className={`absolute inset-0 w-full h-full object-cover hidden ${className}`}
         style={{
           objectPosition: 'center center',
           borderRadius: 'inherit'
@@ -30,7 +30,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ src, className = '' }) => {
         loop
         muted
         playsInline
-        className={`absolute inset-0 w-full h-full object-contain hidden md:block ${className}`}
+        className={`absolute inset-0 w-full h-full object-cover ${className}`}
         style={{
           objectPosition: 'center center',
           borderRadius: 'inherit'
