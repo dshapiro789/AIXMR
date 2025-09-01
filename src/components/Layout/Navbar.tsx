@@ -80,19 +80,14 @@ const Navbar: React.FC = () => {
                 {loading ? (
                   <div className="w-8 h-8 animate-pulse bg-gray-700 rounded"></div>
                 ) : user ? (
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-slate-300 hidden xl:block">
-                      {user.email}
-                    </span>
-                    <Button
-                      variant="secondary"
-                      size="sm"
-                      icon={LogOut}
-                      onClick={handleSignOut}
-                    >
-                      Sign Out
-                    </Button>
-                  </div>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    icon={LogOut}
+                    onClick={handleSignOut}
+                  >
+                    Sign Out
+                  </Button>
                 ) : (
                   <Button
                     variant="primary"
@@ -148,10 +143,6 @@ const Navbar: React.FC = () => {
                     </div>
                   ) : user ? (
                     <div className="space-y-2">
-                      <div className="px-3 py-2 text-sm text-slate-300 flex items-center space-x-2">
-                        <User className="w-4 h-4" />
-                        <span>{user.email}</span>
-                      </div>
                       <button
                         onClick={() => {
                           handleSignOut();

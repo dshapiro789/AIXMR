@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Settings, Sliders, Bot, Database, Shield, Download } from 'lucide-react';
+import { Settings, Sliders, Bot, Database, Shield, Download, User } from 'lucide-react';
 import { AppSettings } from '../../types';
 import { storageUtils } from '../../utils/storage';
+import { useAuth } from '../../contexts/AuthContext';
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 import ModelSettings from './ModelSettings';
@@ -10,6 +11,7 @@ const SettingsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'general' | 'models' | 'privacy' | 'data'>('general');
   const [settings, setSettings] = useState<AppSettings>(storageUtils.getSettings());
   const [hasChanges, setHasChanges] = useState(false);
+  const { user } = useAuth();
 
   const tabs = [
     { id: 'general', label: 'General', icon: Settings },
@@ -80,6 +82,28 @@ const SettingsPage: React.FC = () => {
       {/* Tab Content */}
       {activeTab === 'general' && (
         <div className="space-y-6">
+          {/* User Account Info */}
+          {user && (
+            <Card>
+              <div className="flex items-center space-x-3 mb-4">
+                <User className="w-5 h-5 text-deep-rose-500" />
+                <h2 className="text-xl font-semibold text-slate-100">Account Information</h2>
+              </div>
+              
+              <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-600/30">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-deep-rose-800 rounded-full flex items-center justify-center">
+                    <User className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-slate-400">Signed in as</p>
+                    <p className="text-slate-100 font-medium">{user.email}</p>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          )}
+
           <Card>
             <div className="flex items-center space-x-3 mb-6">
               <Sliders className="w-5 h-5 text-deep-rose-500" />
