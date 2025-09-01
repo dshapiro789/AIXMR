@@ -79,7 +79,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ user, loading, onOpenAuthModa
               onClick={onOpenAuthModal}
               className="w-full sm:w-auto px-8 py-4 text-lg font-semibold shadow-2xl hover:scale-105 transition-transform duration-200"
             >
-              Sign Up or Sign In
+              Sign Up / Sign In
             </Button>
           )}
         </div>
