@@ -152,6 +152,12 @@ const SettingsPage: React.FC = () => {
       )}
 
       {activeTab === 'models' && <ModelSettings />}
+      {activeTab === 'models' && (
+        <ModelSettings 
+          currentSettings={settings}
+          onUpdateSetting={updateSetting}
+        />
+      )}
 
       {activeTab === 'privacy' && (
         <div className="space-y-6">

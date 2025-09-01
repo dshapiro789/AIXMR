@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Plus, Trash2, Save, Bot, Key, Globe, Tag, MessageCircle, AlertTriangle } from 'lucide-react';
+import { Plus, Trash2, Bot, Key, Globe, Tag, MessageCircle, AlertTriangle } from 'lucide-react';
 import { ModelConfig, AppSettings } from '../../types';
 import { storageUtils } from '../../utils/storage';
 import Button from '../UI/Button';
 import Card from '../UI/Card';
 import Input from '../UI/Input';
 
-const ModelSettings: React.FC = () => {
+interface ModelSettingsProps {
+  currentSettings: AppSettings;
+  onUpdateSetting: <K extends keyof AppSettings>(key: K, value: AppSettings[K]) => void;
+}
+
+const ModelSettings: React.FC<ModelSettingsProps> = ({ currentSettings, onUpdateSetting }) => {
   const [models, setModels] = useState<ModelConfig[]>([]);
-  const [settings, setSettings] = useState<AppSettings>(storageUtils.getSettings());
   const [newModel, setNewModel] = useState({
     id: '',
     name: '',
@@ -17,7 +21,6 @@ const ModelSettings: React.FC = () => {
     apiKey: ''
   });
   const [showAddForm, setShowAddForm] = useState(false);
-  const [hasChanges, setHasChanges] = useState(false);
   const addModelFormRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,9 +40,7 @@ const ModelSettings: React.FC = () => {
 
   const loadModels = () => {
     const loadedModels = storageUtils.getModels();
-    const currentSettings = storageUtils.getSettings();
     setModels(loadedModels);
-    setSettings(currentSettings);
   };
 
   const handleAddModel = () => {
@@ -76,25 +77,17 @@ const ModelSettings: React.FC = () => {
       setModels(updatedModels);
       
       // If the deleted model was the preferred one, reset to default
-      if (settings.preferredModel === id) {
+      if (currentSettings.preferredModel === id) {
         const defaultModel = updatedModels.find(m => m.isDefault);
         if (defaultModel) {
-          setSettings({ ...settings, preferredModel: defaultModel.id });
-          setHasChanges(true);
+          onUpdateSetting('preferredModel', defaultModel.id);
         }
       }
     }
   };
 
   const handlePreferredModelChange = (modelId: string) => {
-    setSettings({ ...settings, preferredModel: modelId });
-    setHasChanges(true);
-  };
-
-  const handleSaveChanges = () => {
-    storageUtils.updatePreferredModel(settings.preferredModel);
-    setHasChanges(false);
-    alert('Settings saved successfully!');
+    onUpdateSetting('preferredModel', modelId);
   };
 
   const handleClearChatHistory = () => {
@@ -145,7 +138,7 @@ const ModelSettings: React.FC = () => {
                   type="radio"
                   name="preferredModel"
                   value={model.id}
-                  checked={settings.preferredModel === model.id}
+                  checked={currentSettings.preferredModel === model.id}
                   onChange={() => handlePreferredModelChange(model.id)}
                   className="text-deep-rose-600 focus:ring-deep-rose-500 mt-1 sm:mt-0 flex-shrink-0"
                 />
@@ -299,29 +292,6 @@ const ModelSettings: React.FC = () => {
           </div>
         </div>
       </Card>
-
-      {/* Save Changes */}
-      {hasChanges && (
-        <Card variant="warning" className="mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-start sm:items-center space-x-3">
-              <Save className="w-5 h-5 text-amber-400" />
-              <div>
-                <h3 className="font-medium text-amber-200 text-sm sm:text-base">Unsaved Changes</h3>
-                <p className="text-xs sm:text-sm text-amber-300">You have unsaved changes to your model settings.</p>
-              </div>
-            </div>
-            <Button
-              variant="primary"
-              icon={Save}
-              onClick={handleSaveChanges}
-              className="w-full sm:w-auto"
-            >
-              Save Changes
-            </Button>
-          </div>
-        </Card>
-      )}
 
       {/* Privacy Notice */}
       <Card variant="security">
